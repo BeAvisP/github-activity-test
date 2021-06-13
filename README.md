@@ -1,4 +1,4 @@
-<h1 align="center">crm-service-api by Beatriz Avis</h1>
+<h1 align="center">github-activity-test by Beatriz Avis</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://twitter.com/NishyIR" target="_blank">
