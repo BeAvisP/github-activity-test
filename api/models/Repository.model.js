@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const repoSchema = new Schema(
   {
-    githubID: { type: Number, required: true },
-    node_id: { type: String, required: true },
-    name: { type: String, required: true },
-    full_name: { type: String, required: true },
+    githubID: { type: Number, required: true, unique: true },
+    node_id: { type: String, required: true, unique: true },
+    name: { type: String, required: true, unique: true },
+    full_name: { type: String, required: true, unique: true },
     private: { type: Boolean, required: true },
     created_at: { type: Date, required: true },
     updated_at: { type: Date},
