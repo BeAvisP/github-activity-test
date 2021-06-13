@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+<h1 align="center">crm-service-api by Beatriz Avis</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://twitter.com/NishyIR" target="_blank">
+    <img alt="Twitter: NishyIR" src="https://img.shields.io/twitter/follow/NishyIR.svg?style=social" />
+  </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`React` app that use github API to fetch organization repos and show it's details.
 
-## Available Scripts
+To track the repos, an API built with `NodeJS` and `Express` connected to `MongoDB` with `Mongoose` has been implemented. So, the user can track any repo and the information is saved to the DDBB.
 
-In the project directory, you can run:
+## Download
 
-### `npm start`
+```sh
+git clone https://github.com/BeAvisP/github-activity-test.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+cd github-activity-test
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Install API
 
-### `npm test`
+```sh
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This command will install all the dependencies needed to run de API.
 
-### `npm run build`
+## Install CLIENT
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This command will install all the dependencies needed to run de frontend client.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Initial configuration
 
-### `npm run eject`
+In order to start using the API you need to have configure your `.env` file.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Here is a mockup of the file:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+PORT=3001
+ENV=development
+DB_URL=mongodb://localhost:27017/github-activity
+PUBLIC_DOMAIN=http://localhost:3000
+SECRET=basic-secret-auth
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Usage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To build and run the `API`:
 
-## Learn More
+```sh
+cd api
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The URL of the API will be `localhost:3001`
 
-### Code Splitting
+To run the `React` app:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+cd client
 
-### Analyzing the Bundle Size
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The URL of the client will be `localhost:3000`.
+By default a browser window will be opened when the app is running.
 
-### Making a Progressive Web App
+## Endpoints Table
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| HTTP Method | Endpoint         | Request Body                                                                                                                                                                                           | Success status | Error Status | Description                          |
+| ----------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | ------------ | ------------------------------------ |
+| GET         | `/api/repos/`    |                                                                                                                                                                                                        | 200            | 500          | Get all saved repos in the DDBB      |
+| GET         | `/api/repos/:id` |                                                                                                                                                                                                        | 200            | 500          | Get a repo by it's ID from the DDBB  |
+| POST        | `/api/repos/`    | { id, node_id, name, full_name, private, created_at, updated_at, pushed_at, size, stargazers_count, watchers_count, forks_count, open_issues_count, default_branch, network_count, subscribers_count } | 200            | 500          | Save a new repo in the DDBB          |
+| PUT         | `/api/repos/:id` | { id, node_id, name, full_name, private, created_at, updated_at, pushed_at, size, stargazers_count, watchers_count, forks_count, open_issues_count, default_branch, network_count, subscribers_count } | 200            | 500          | Edit repo by it's ID from the DDBB   |
+| DELETE      | `/api/repos/:id` |                                                                                                                                                                                                        | 200            | 500          | Delete repo by it's ID from the DDBB |
 
-### Advanced Configuration
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+👤 **Beatriz Avis**
 
-### Deployment
+- Twitter: [@NishyIR](https://twitter.com/NishyIR)
+- Github: [@BeAvisP](https://github.com/BeAvisP)
+- LinkedIn: [@beatrizavis](https://linkedin.com/in/beatrizavis)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Show your support
 
-### `npm run build` fails to minify
+Give a ⭐️ if this project helped you!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
