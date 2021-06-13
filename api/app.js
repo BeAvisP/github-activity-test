@@ -14,6 +14,11 @@ require('./configs/cors.config')(app);
 // Initialize sanitize
 app.use(mongoSanitize());
 
+// Routes
+const repositoryRoutes = require('./routes/repositoryRoutes');
+
+app.use('/api/repos', repositoryRoutes);
+
 // Catch 404 and respond with error message
 app.use((req, res, next) => res.status(404).json({ message: 'Not found' }));
 
