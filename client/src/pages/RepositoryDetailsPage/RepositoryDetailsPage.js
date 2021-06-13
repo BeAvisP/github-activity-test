@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import SCRepositoryDetailsPage from './RepositoryDetailsPage.styled';
 import githubService from '../../services/github.service';
+import RepoActivityService from '../../services/repoActivity.service';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { IoIosReturnLeft, IoIosEye, IoIosStar, IoIosSave } from 'react-icons/io';
@@ -12,6 +13,7 @@ function RepositoryDetailsPage() {
   const [contributorsInfo, setContributorsInfo] = useState();
   const { org, repo } = useParams();
   const history = useHistory();
+  const repoActivityService = new RepoActivityService();
 
   useEffect(
     () => {
@@ -28,10 +30,16 @@ function RepositoryDetailsPage() {
     []
   );
 
+  const handleTrack = () => {
+    repoActivityService.createRepoActivity(repoInfo)
+      .then(repo => console.log('created', repo))
+      .catch(err => console.error(err));
+  };
+
   return (
     <SCRepositoryDetailsPage>
       <IoIosReturnLeft className='icons return' onClick={() => history.push(`/${org}`)}/>
-      <IoIosSave className='icons save'/>
+      <IoIosSave className='icons save' onClick={() => handleTrack()}/>
       <div className='wrapper'>
         <h1>{repoInfo?.name}</h1>
         <div className='details'>
